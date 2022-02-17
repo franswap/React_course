@@ -1,9 +1,7 @@
-import { useState } from "react"
 import {Card} from "./Card"
-import {list} from "../data/Employés"
+
 
 export const Table = (props) => {
-    const [listEmployes, setListEmployes] = useState(list)
 
     return (
         <table className="table table-warning">
@@ -19,8 +17,10 @@ export const Table = (props) => {
         </thead>
         <tbody>
             {
-                listEmployes.map(employes => <Card 
+                props.listEmployes.map(employes => <Card 
 
+                    
+                    key= {employes.id}
                     id={employes.id}
                     prenom={employes.prenom}
                     nom={employes.nom} 
