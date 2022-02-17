@@ -1,8 +1,12 @@
+import { useState } from "react"
 import {Card} from "./Card"
+import {list} from "../data/Employés"
 
 export const Table = (props) => {
+    const [listEmployes, setListEmployes] = useState(list)
+
     return (
-        <table className="table table-dark table-hover">
+        <table className="table table-warning">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -10,21 +14,21 @@ export const Table = (props) => {
             <th scope="col">Nom</th>
             <th scope="col">Mail</th>
             <th scope="col">Avatar</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-      
-          <Card id="1"
-          prenom="John" 
-          nom="Snow" 
-          mail="john.snow@nordist.com" 
-          img="john-snow" />
-      
-          <Card id="2"
-          prenom="Bob" 
-          nom="De la jungle" 
-          mail="Bob.delajungle@chaleur.com" 
-          img="bobjungle" />
+            {
+                listEmployes.map(employes => <Card 
+
+                    id={employes.id}
+                    prenom={employes.prenom}
+                    nom={employes.nom} 
+                    mail={employes.email}
+                    img= {employes.avatar}
+                    
+                />)
+            }
       
         </tbody>
         </table>
